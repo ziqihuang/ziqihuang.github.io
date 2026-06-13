@@ -1,0 +1,12 @@
+.splash-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+
+.splash-cursor canvas#fluid {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}

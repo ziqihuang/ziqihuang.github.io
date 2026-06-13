@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Reticle from "./Reticle";
 import Particles from "./reactbits/Particles";
+import SplashCursor from "./reactbits/SplashCursor";
 import { useTheme } from "../context/ThemeContext";
 
 export default function Layout() {
@@ -29,6 +30,20 @@ export default function Layout() {
           particleBaseSize={90}
         />
       </div>
+
+      {/* fluid cursor trail — color follows the active country theme */}
+      <SplashCursor
+        DENSITY_DISSIPATION={3.5}
+        VELOCITY_DISSIPATION={2}
+        PRESSURE={0.1}
+        CURL={3}
+        SPLAT_RADIUS={0.2}
+        SPLAT_FORCE={6000}
+        COLOR_UPDATE_SPEED={10}
+        SHADING
+        RAINBOW_MODE={false}
+        COLOR={primary}
+      />
 
       <Reticle />
       <Header />

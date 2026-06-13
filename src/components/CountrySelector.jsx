@@ -8,7 +8,7 @@ export default function CountrySelector() {
     <section className="country-bar" aria-label="Select country">
       <div className="country-bar-title">
         // Select Country — switch cultural style
-        {autoRotate && " · auto-rotating every 5s (pick one to stop)"}
+        {autoRotate && " · idle auto-rotating every 4s (interact to pause)"}
       </div>
 
       <div className="country-chips" role="radiogroup" aria-label="Country">

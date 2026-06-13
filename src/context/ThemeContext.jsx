@@ -1,10 +1,21 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { COUNTRY_LIST, DEFAULT_COUNTRY, getTheme } from "../themes";
 
 const ThemeContext = createContext(null);
 
 const STORAGE_KEY = "yellowpage.country";
-const ROTATE_MS = 5000;
+// How long the user must be idle before rotation kicks in, and the gap between switches.
+const IDLE_MS = 4000;
+const ROTATE_MS = 4000;
+const TICK_MS = 500;
 
 export function ThemeProvider({ children }) {
   const [country, setCountry] = useState(() => {
@@ -12,10 +23,13 @@ export function ThemeProvider({ children }) {
     return window.localStorage.getItem(STORAGE_KEY) || DEFAULT_COUNTRY;
   });
 
-  // Auto-rotate countries while the user hasn't manually picked one.
-  const [autoRotate, setAutoRotate] = useState(true);
+  // True while the page is idle and actively rotating (used for UI status).
+  const [autoRotate, setAutoRotate] = useState(false);
 
   const theme = useMemo(() => getTheme(country), [country]);
+
+  const lastActivityRef = useRef(Date.now());
+  const lastSwitchRef = useRef(0);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -27,21 +41,39 @@ export function ThemeProvider({ children }) {
     window.localStorage.setItem(STORAGE_KEY, theme.id);
   }, [theme]);
 
-  // Switch to the next country every 5s until the user picks one.
+  // Mark the user as active on any interaction; this pauses rotation.
   useEffect(() => {
-    if (!autoRotate) return undefined;
+    const markActive = () => {
+      lastActivityRef.current = Date.now();
+    };
+    const events = ["mousemove", "mousedown", "keydown", "wheel", "touchstart", "scroll"];
+    events.forEach((evt) => window.addEventListener(evt, markActive, { passive: true }));
+    return () => {
+      events.forEach((evt) => window.removeEventListener(evt, markActive));
+    };
+  }, []);
+
+  // While idle, advance to the next country every ROTATE_MS.
+  useEffect(() => {
     const ids = COUNTRY_LIST.map((c) => c.id);
     const timer = setInterval(() => {
+      const now = Date.now();
+      const idle = now - lastActivityRef.current >= IDLE_MS;
+      setAutoRotate((prev) => (prev === idle ? prev : idle));
+      if (!idle) return;
+      if (now - lastSwitchRef.current < ROTATE_MS) return;
+      lastSwitchRef.current = now;
       setCountry((prev) => {
         const idx = ids.indexOf(prev);
         return ids[(idx + 1) % ids.length];
       });
-    }, ROTATE_MS);
+    }, TICK_MS);
     return () => clearInterval(timer);
-  }, [autoRotate]);
+  }, []);
 
-  // A manual pick from the selector stops auto-rotation.
+  // A manual pick counts as activity, pausing rotation until idle again.
   const changeCountry = useCallback((id) => {
+    lastActivityRef.current = Date.now();
     setAutoRotate(false);
     setCountry(id);
   }, []);
