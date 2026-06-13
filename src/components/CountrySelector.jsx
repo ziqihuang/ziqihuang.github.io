@@ -2,11 +2,14 @@ import { COUNTRY_LIST } from "../themes";
 import { useTheme } from "../context/ThemeContext";
 
 export default function CountrySelector() {
-  const { country, theme, changeCountry } = useTheme();
+  const { country, theme, changeCountry, autoRotate } = useTheme();
 
   return (
     <section className="country-bar" aria-label="Select country">
-      <div className="country-bar-title">// Select Country — switch cultural style</div>
+      <div className="country-bar-title">
+        // Select Country — switch cultural style
+        {autoRotate && " · auto-rotating every 5s (pick one to stop)"}
+      </div>
 
       <div className="country-chips" role="radiogroup" aria-label="Country">
         {COUNTRY_LIST.map((c) => (
