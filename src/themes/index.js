@@ -1,0 +1,153 @@
+// Country-driven cultural theme definitions for the YELLOW PAGE generator.
+// Each theme maps to a set of CSS custom properties applied at runtime.
+// The default country is Japan (Cyberpunk / "Japanese Punk 2077").
+
+export const THEMES = {
+  japan: {
+    id: "japan",
+    label: "日本 / Japan",
+    flag: "JP",
+    styleName: "Japanese Punk 2077",
+    description: "Neon-soaked cyberpunk. Rain-slick streets, kanji glow, terminal energy.",
+    cursor: "reticle",
+    loader: "boot",
+    tokens: {
+      "--bg": "#050507",
+      "--bg-2": "#0a0f1f",
+      "--surface": "rgba(15, 23, 42, 0.78)",
+      "--surface-line": "rgba(0, 194, 255, 0.25)",
+      "--primary": "#00c2ff",
+      "--accent": "#ff2eea",
+      "--accent-2": "#39ff14",
+      "--text": "#e5e7eb",
+      "--text-dim": "#6b7280",
+      "--glow": "0 0 18px rgba(0, 194, 255, 0.45)",
+      "--glow-accent": "0 0 22px rgba(255, 46, 234, 0.5)",
+      "--font-display": "'Orbitron', 'Eurostile', system-ui, sans-serif",
+      "--font-mono": "'JetBrains Mono', 'Courier New', monospace",
+      "--radius": "4px",
+      "--motif": "grid",
+    },
+  },
+
+  france: {
+    id: "france",
+    label: "法国 / France",
+    flag: "FR",
+    styleName: "Parisian Art Deco",
+    description: "Gilded elegance. Symmetric geometry, champagne gold on deep noir.",
+    cursor: "soft",
+    loader: "fade",
+    tokens: {
+      "--bg": "#0e0c0a",
+      "--bg-2": "#1a1611",
+      "--surface": "rgba(26, 22, 17, 0.85)",
+      "--surface-line": "rgba(212, 175, 55, 0.3)",
+      "--primary": "#d4af37",
+      "--accent": "#c89b3c",
+      "--accent-2": "#f3e9d2",
+      "--text": "#f3e9d2",
+      "--text-dim": "#a89878",
+      "--glow": "0 0 16px rgba(212, 175, 55, 0.3)",
+      "--glow-accent": "0 0 20px rgba(212, 175, 55, 0.4)",
+      "--font-display": "'Playfair Display', 'Didot', Georgia, serif",
+      "--font-mono": "'Courier New', monospace",
+      "--radius": "2px",
+      "--motif": "deco",
+    },
+  },
+
+  brazil: {
+    id: "brazil",
+    label: "巴西 / Brazil",
+    flag: "BR",
+    styleName: "Tropical Vivid",
+    description: "Carnival energy. Lush greens, solar yellows, bossa-nova warmth.",
+    cursor: "soft",
+    loader: "fade",
+    tokens: {
+      "--bg": "#04140c",
+      "--bg-2": "#062b16",
+      "--surface": "rgba(6, 43, 22, 0.8)",
+      "--surface-line": "rgba(255, 223, 0, 0.3)",
+      "--primary": "#00e676",
+      "--accent": "#ffdf00",
+      "--accent-2": "#00b0ff",
+      "--text": "#f1fff4",
+      "--text-dim": "#7fae8e",
+      "--glow": "0 0 18px rgba(0, 230, 118, 0.4)",
+      "--glow-accent": "0 0 22px rgba(255, 223, 0, 0.45)",
+      "--font-display": "'Poppins', 'Futura', system-ui, sans-serif",
+      "--font-mono": "'JetBrains Mono', monospace",
+      "--radius": "14px",
+      "--motif": "wave",
+    },
+  },
+
+  china: {
+    id: "china",
+    label: "中国 / China",
+    flag: "CN",
+    styleName: "Imperial Ink",
+    description: "Vermilion and gold. Ink-brush rhythm, lantern glow, dynastic poise.",
+    cursor: "soft",
+    loader: "fade",
+    tokens: {
+      "--bg": "#0c0303",
+      "--bg-2": "#1c0808",
+      "--surface": "rgba(28, 8, 8, 0.85)",
+      "--surface-line": "rgba(255, 196, 0, 0.3)",
+      "--primary": "#e23b3b",
+      "--accent": "#ffc400",
+      "--accent-2": "#ff7043",
+      "--text": "#fbeede",
+      "--text-dim": "#b08a7a",
+      "--glow": "0 0 18px rgba(226, 59, 59, 0.4)",
+      "--glow-accent": "0 0 22px rgba(255, 196, 0, 0.45)",
+      "--font-display": "'Noto Serif SC', 'Songti SC', serif",
+      "--font-mono": "'JetBrains Mono', monospace",
+      "--radius": "6px",
+      "--motif": "ink",
+    },
+  },
+
+  usa: {
+    id: "usa",
+    label: "美国 / USA",
+    flag: "US",
+    styleName: "Bold Modern",
+    description: "Confident and crisp. High-contrast electric blue, stark grid system.",
+    cursor: "soft",
+    loader: "fade",
+    tokens: {
+      "--bg": "#070a12",
+      "--bg-2": "#0f1626",
+      "--surface": "rgba(15, 22, 38, 0.85)",
+      "--surface-line": "rgba(59, 130, 246, 0.3)",
+      "--primary": "#3b82f6",
+      "--accent": "#ef4444",
+      "--accent-2": "#e5e7eb",
+      "--text": "#f8fafc",
+      "--text-dim": "#94a3b8",
+      "--glow": "0 0 16px rgba(59, 130, 246, 0.35)",
+      "--glow-accent": "0 0 20px rgba(239, 68, 68, 0.4)",
+      "--font-display": "'Archivo', 'Helvetica Neue', system-ui, sans-serif",
+      "--font-mono": "'JetBrains Mono', monospace",
+      "--radius": "8px",
+      "--motif": "stripes",
+    },
+  },
+};
+
+export const DEFAULT_COUNTRY = "japan";
+
+export const COUNTRY_LIST = Object.values(THEMES).map((t) => ({
+  id: t.id,
+  label: t.label,
+  flag: t.flag,
+  styleName: t.styleName,
+}));
+
+export function getTheme(countryId) {
+  return THEMES[countryId] || THEMES[DEFAULT_COUNTRY];
+}
