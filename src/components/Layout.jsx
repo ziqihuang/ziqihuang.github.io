@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Reticle from "./Reticle";
+import AutoPager from "./AutoPager";
 import Particles from "./reactbits/Particles";
 import { useTheme } from "../context/ThemeContext";
 
@@ -31,6 +32,7 @@ export default function Layout() {
       </div>
 
       <Reticle />
+      <AutoPager />
       <Header />
       <main className="main">
         <div key={location.pathname} className="page">

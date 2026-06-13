@@ -1,19 +1,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { COUNTRY_LIST, DEFAULT_COUNTRY, getTheme } from "../themes";
+import { DEFAULT_COUNTRY, getTheme } from "../themes";
 
 const ThemeContext = createContext(null);
 
 const STORAGE_KEY = "yellowpage.country";
-const ROTATE_MS = 3000;
 
 export function ThemeProvider({ children }) {
   const [country, setCountry] = useState(() => {
     if (typeof window === "undefined") return DEFAULT_COUNTRY;
     return window.localStorage.getItem(STORAGE_KEY) || DEFAULT_COUNTRY;
   });
-
-  // Auto-rotate countries while the user hasn't manually picked one.
-  const [autoRotate, setAutoRotate] = useState(true);
 
   const theme = useMemo(() => getTheme(country), [country]);
 
@@ -27,28 +23,11 @@ export function ThemeProvider({ children }) {
     window.localStorage.setItem(STORAGE_KEY, theme.id);
   }, [theme]);
 
-  // Cycle to the next country every few seconds until the user interacts.
-  useEffect(() => {
-    if (!autoRotate) return undefined;
-    const ids = COUNTRY_LIST.map((c) => c.id);
-    const timer = setInterval(() => {
-      setCountry((prev) => {
-        const idx = ids.indexOf(prev);
-        return ids[(idx + 1) % ids.length];
-      });
-    }, ROTATE_MS);
-    return () => clearInterval(timer);
-  }, [autoRotate]);
-
-  // Called from the country selector — a manual pick stops auto-rotation.
-  const changeCountry = useCallback((id) => {
-    setAutoRotate(false);
-    setCountry(id);
-  }, []);
+  const changeCountry = useCallback((id) => setCountry(id), []);
 
   const value = useMemo(
-    () => ({ country, theme, changeCountry, autoRotate, setAutoRotate }),
-    [country, theme, changeCountry, autoRotate]
+    () => ({ country, theme, changeCountry }),
+    [country, theme, changeCountry]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
