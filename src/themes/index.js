@@ -3,33 +3,6 @@
 // The default country is Japan (Cyberpunk / "Japanese Punk 2077").
 
 export const THEMES = {
-  japan: {
-    id: "japan",
-    label: "日本 / Japan",
-    flag: "JP",
-    styleName: "Japanese Punk 2077",
-    description: "Neon-soaked cyberpunk. Rain-slick streets, kanji glow, terminal energy.",
-    cursor: "reticle",
-    loader: "boot",
-    tokens: {
-      "--bg": "#050507",
-      "--bg-2": "#0a0f1f",
-      "--surface": "rgba(15, 23, 42, 0.78)",
-      "--surface-line": "rgba(0, 194, 255, 0.25)",
-      "--primary": "#00c2ff",
-      "--accent": "#ff2eea",
-      "--accent-2": "#39ff14",
-      "--text": "#e5e7eb",
-      "--text-dim": "#6b7280",
-      "--glow": "0 0 18px rgba(0, 194, 255, 0.45)",
-      "--glow-accent": "0 0 22px rgba(255, 46, 234, 0.5)",
-      "--font-display": "'Orbitron', 'Eurostile', system-ui, sans-serif",
-      "--font-mono": "'JetBrains Mono', 'Courier New', monospace",
-      "--radius": "4px",
-      "--motif": "grid",
-    },
-  },
-
   france: {
     id: "france",
     label: "法国 / France",
@@ -54,6 +27,33 @@ export const THEMES = {
       "--font-mono": "'Courier New', monospace",
       "--radius": "2px",
       "--motif": "deco",
+    },
+  },
+
+  japan: {
+    id: "japan",
+    label: "日本 / Japan",
+    flag: "JP",
+    styleName: "Japanese Punk 2077",
+    description: "Neon-soaked cyberpunk. Rain-slick streets, kanji glow, terminal energy.",
+    cursor: "reticle",
+    loader: "boot",
+    tokens: {
+      "--bg": "#050507",
+      "--bg-2": "#0a0f1f",
+      "--surface": "rgba(15, 23, 42, 0.78)",
+      "--surface-line": "rgba(0, 194, 255, 0.25)",
+      "--primary": "#00c2ff",
+      "--accent": "#ff2eea",
+      "--accent-2": "#39ff14",
+      "--text": "#e5e7eb",
+      "--text-dim": "#6b7280",
+      "--glow": "0 0 18px rgba(0, 194, 255, 0.45)",
+      "--glow-accent": "0 0 22px rgba(255, 46, 234, 0.5)",
+      "--font-display": "'Orbitron', 'Eurostile', system-ui, sans-serif",
+      "--font-mono": "'JetBrains Mono', 'Courier New', monospace",
+      "--radius": "4px",
+      "--motif": "grid",
     },
   },
 
