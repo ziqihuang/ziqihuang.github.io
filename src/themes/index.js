@@ -34,22 +34,22 @@ export const THEMES = {
     id: "france",
     label: "法国 / France",
     flag: "FR",
-    styleName: "Parisian Art Deco",
-    description: "Gilded elegance. Symmetric geometry, champagne gold on deep noir.",
+    styleName: "Parisian Yellow Deco",
+    description: "Sunlit Parisian elegance. Art Deco geometry in vivid yellow on deep noir.",
     cursor: "soft",
     loader: "fade",
     tokens: {
-      "--bg": "#0e0c0a",
-      "--bg-2": "#1a1611",
-      "--surface": "rgba(26, 22, 17, 0.85)",
-      "--surface-line": "rgba(212, 175, 55, 0.3)",
-      "--primary": "#d4af37",
-      "--accent": "#c89b3c",
-      "--accent-2": "#f3e9d2",
-      "--text": "#f3e9d2",
-      "--text-dim": "#a89878",
-      "--glow": "0 0 16px rgba(212, 175, 55, 0.3)",
-      "--glow-accent": "0 0 20px rgba(212, 175, 55, 0.4)",
+      "--bg": "#0f0d07",
+      "--bg-2": "#1c1709",
+      "--surface": "rgba(28, 23, 9, 0.85)",
+      "--surface-line": "rgba(255, 212, 0, 0.34)",
+      "--primary": "#ffd400",
+      "--accent": "#ffb300",
+      "--accent-2": "#fff3c4",
+      "--text": "#fbf3d8",
+      "--text-dim": "#bba968",
+      "--glow": "0 0 18px rgba(255, 212, 0, 0.38)",
+      "--glow-accent": "0 0 22px rgba(255, 179, 0, 0.48)",
       "--font-display": "'Playfair Display', 'Didot', Georgia, serif",
       "--font-mono": "'Courier New', monospace",
       "--radius": "2px",
@@ -139,7 +139,7 @@ export const THEMES = {
   },
 };
 
-export const DEFAULT_COUNTRY = "japan";
+export const DEFAULT_COUNTRY = "france";
 
 export const COUNTRY_LIST = Object.values(THEMES).map((t) => ({
   id: t.id,
