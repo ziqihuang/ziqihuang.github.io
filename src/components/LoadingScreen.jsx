@@ -1,33 +1,29 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
-
-const BOOT_LINES = [
-  "> SYSTEM ONLINE",
-  "> LOADING CULTURAL THEME ENGINE",
-  "> RENDERING YELLOW PAGE",
-];
+import { useCopy } from "../hooks/useCopy";
 
 export default function LoadingScreen({ onDone, duration = 1600 }) {
   const { theme } = useTheme();
+  const copy = useCopy();
   const [line, setLine] = useState(0);
 
   useEffect(() => {
-    const stepTime = duration / BOOT_LINES.length;
+    const stepTime = duration / copy.loading.length;
     const stepTimer = setInterval(() => {
-      setLine((v) => Math.min(v + 1, BOOT_LINES.length - 1));
+      setLine((v) => Math.min(v + 1, copy.loading.length - 1));
     }, stepTime);
     const doneTimer = setTimeout(() => onDone?.(), duration);
     return () => {
       clearInterval(stepTimer);
       clearTimeout(doneTimer);
     };
-  }, [duration, onDone]);
+  }, [duration, onDone, copy.loading.length]);
 
   return (
     <div className="loader">
       <div className="loader-inner">
         <div className="loader-logo">BYP</div>
-        <div className="loader-line">{BOOT_LINES[line]}</div>
+        <div className="loader-line">{copy.loading[line]}</div>
         <div className="loader-bar">
           <span />
         </div>

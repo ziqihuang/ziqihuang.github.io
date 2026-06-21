@@ -6,15 +6,11 @@ import StarBorder from "../components/reactbits/StarBorder";
 import TiltedCard from "../components/reactbits/TiltedCard";
 import Aurora from "../components/reactbits/Aurora";
 import { useTheme } from "../context/ThemeContext";
-
-const ENTRIES = [
-  { to: "/content", label: "Content", desc: "Portfolio & editorial showcase" },
-  { to: "/circle", label: "Circle", desc: "Community of creators" },
-  { to: "/products", label: "Products", desc: "Services & templates" },
-];
+import { useCopy } from "../hooks/useCopy";
 
 export default function HomePage() {
   const { theme } = useTheme();
+  const copy = useCopy();
   const primary = theme.tokens["--primary"];
   const accent = theme.tokens["--accent"];
   const accent2 = theme.tokens["--accent-2"];
@@ -32,11 +28,11 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="hero-tag">// Build Your Page</div>
+        <div className="hero-tag">{copy.home.tag}</div>
         <h1 className="hero-byp">BYP</h1>
         <div className="hero-sub">
           <DecryptedText
-            text="Build Your Page"
+            text={copy.home.subtitle}
             animateOn="view"
             sequential
             revealDirection="center"
@@ -44,17 +40,13 @@ export default function HomePage() {
             maxIterations={14}
           />
         </div>
-        <p className="hero-desc">
-          A culture-aware homepage generator. Pick a country and the entire
-          identity — color, type, motif, and motion — adapts to that culture.
-          Default theme: Japanese Punk 2077.
-        </p>
+        <p className="hero-desc">{copy.home.desc}</p>
         <div className="hero-cta">
           <StarBorder as={Link} to="/products" color={accent} speed="5s">
-            Start Building
+            {copy.home.ctaBuild}
           </StarBorder>
           <StarBorder as={Link} to="/content" color={primary} speed="6s">
-            View Showcase
+            {copy.home.ctaShowcase}
           </StarBorder>
         </div>
       </section>
@@ -63,10 +55,10 @@ export default function HomePage() {
 
       <section style={{ marginTop: 56 }}>
         <div className="country-bar-title" style={{ marginBottom: 18 }}>
-          // Explore sections
+          {copy.home.explore}
         </div>
         <div className="grid">
-          {ENTRIES.map((e) => (
+          {copy.home.entries.map((e) => (
             <Link key={e.to} to={e.to} style={{ display: "block" }}>
               <TiltedCard
                 containerHeight="180px"
@@ -79,13 +71,13 @@ export default function HomePage() {
                 displayOverlayContent
                 overlayContent={
                   <div className="tilt-entry">
-                    <span className="card-tag">Enter</span>
+                    <span className="card-tag">{copy.home.enter}</span>
                     <div>
                       <h3>{e.label}</h3>
                       <p>{e.desc}</p>
                     </div>
                     <div className="card-meta">
-                      <span>→ Open</span>
+                      <span>{copy.home.open}</span>
                     </div>
                   </div>
                 }

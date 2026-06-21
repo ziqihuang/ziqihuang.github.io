@@ -14,9 +14,7 @@ export default function Layout() {
 
   return (
     <div className="layout">
-      {/* base gradient (z -2) */}
       <div className="bg-fx" aria-hidden="true" />
-      {/* theme-colored particle field (z -1) */}
       <div className="bg-particles" aria-hidden="true">
         <Particles
           key={theme.id}
@@ -31,7 +29,6 @@ export default function Layout() {
         />
       </div>
 
-      {/* fluid cursor trail — color follows the active country theme */}
       <SplashCursor
         DENSITY_DISSIPATION={3.5}
         VELOCITY_DISSIPATION={2}

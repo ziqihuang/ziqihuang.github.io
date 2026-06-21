@@ -1,27 +1,24 @@
 import { Avatar, PageSection } from "../components/Section";
-import { SKILLS, TIMELINE } from "../data/mock";
+import { useCopy } from "../hooks/useCopy";
 
 export default function AboutPage() {
+  const copy = useCopy();
+
   return (
-    <PageSection index="04 / ABOUT" title="About Me">
+    <PageSection index={copy.about.index} title={copy.about.title}>
       <div className="about-grid">
         <div>
           <div className="member" style={{ marginBottom: 18 }}>
-            <Avatar name="Your Name" />
+            <Avatar name={copy.about.name} />
             <div>
-              <h3 style={{ fontSize: 18 }}>Your Name</h3>
-              <small>Creator · Page Builder</small>
+              <h3 style={{ fontSize: 18 }}>{copy.about.name}</h3>
+              <small>{copy.about.role}</small>
             </div>
           </div>
-          <p style={{ color: "var(--text-dim)", lineHeight: 1.8 }}>
-            This is a placeholder bio block. The YELLOW PAGE generator lets you
-            present yourself, your work, or your store with a visual identity
-            that shifts to match a chosen country&apos;s culture. No portrait
-            photo is used here — only an initials avatar and type.
-          </p>
+          <p style={{ color: "var(--text-dim)", lineHeight: 1.8 }}>{copy.about.bio}</p>
 
           <div className="tags">
-            {SKILLS.map((s) => (
+            {copy.about.skills.map((s) => (
               <span key={s} className="tag">
                 {s}
               </span>
@@ -31,9 +28,9 @@ export default function AboutPage() {
 
         <div>
           <div className="country-bar-title" style={{ marginBottom: 18 }}>
-            // Timeline
+            {copy.about.timeline}
           </div>
-          {TIMELINE.map((t) => (
+          {copy.about.timelineItems.map((t) => (
             <div key={t.year} className="timeline-item">
               <span>{t.year}</span>
               <h4>{t.title}</h4>

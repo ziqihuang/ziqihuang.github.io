@@ -1,14 +1,16 @@
 import { COUNTRY_LIST } from "../themes";
 import { useTheme } from "../context/ThemeContext";
+import { useCopy } from "../hooks/useCopy";
 
 export default function CountrySelector() {
   const { country, theme, changeCountry, autoRotate } = useTheme();
+  const copy = useCopy();
 
   return (
     <section className="country-bar" aria-label="Select country">
       <div className="country-bar-title">
-        // Select Country — switch cultural style
-        {autoRotate && " · idle auto-rotating every 4s (interact to pause)"}
+        {copy.country.title}
+        {autoRotate && copy.country.autoRotate}
       </div>
 
       <div className="country-chips" role="radiogroup" aria-label="Country">
@@ -27,7 +29,7 @@ export default function CountrySelector() {
       </div>
 
       <div className="chip-style">
-        Active style: <b>{theme.styleName}</b> — {theme.description}
+        {copy.country.activeStyle} <b>{theme.styleName}</b> — {theme.description}
       </div>
     </section>
   );

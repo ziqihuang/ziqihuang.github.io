@@ -1,0 +1,226 @@
+const EN = {
+  nav: [
+    { to: "/", label: "Home", end: true },
+    { to: "/content", label: "Content" },
+    { to: "/circle", label: "Circle" },
+    { to: "/products", label: "Products" },
+    { to: "/about", label: "About Me" },
+    { to: "/contact", label: "Contact Me" },
+  ],
+  home: {
+    tag: "// Build Your Page",
+    subtitle: "Build Your Page",
+    desc:
+      "Yellow Page — the new Yellow Page for the OPC era — a cross-culture-aware digital assistant homepage generator.",
+    ctaBuild: "Start Building",
+    ctaShowcase: "View Showcase",
+    explore: "// Explore sections",
+    enter: "Enter",
+    open: "→ Open",
+    entries: [
+      { to: "/content", label: "Content", desc: "Portfolio & editorial showcase" },
+      { to: "/circle", label: "Circle", desc: "Community of creators" },
+      { to: "/products", label: "Products", desc: "Services & templates" },
+    ],
+  },
+  country: {
+    title: "// Select Country — switch cultural style",
+    autoRotate: " · idle auto-rotating every 4s (interact to pause)",
+    activeStyle: "Active style:",
+  },
+  footer: (year, styleName, label) =>
+    `YELLOW PAGE © ${year} — ${styleName} theme active · ${label}`,
+  content: {
+    index: "01 / CONTENT",
+    title: "Content",
+    placeholder:
+      "Placeholder showcase block — typography and geometry only, no imagery in this prototype.",
+    view: "→ View",
+    items: [
+      { tag: "Editorial", title: "Neon Districts Lookbook", meta: "12 frames" },
+      { tag: "Showcase", title: "Studio Session 04", meta: "8 frames" },
+      { tag: "Article", title: "Designing Cultural Themes", meta: "6 min read" },
+      { tag: "Portfolio", title: "Runway / Vertical Series", meta: "20 frames" },
+      { tag: "Editorial", title: "Midnight Market Story", meta: "14 frames" },
+      { tag: "Showcase", title: "Concept Board: 2077", meta: "10 frames" },
+    ],
+  },
+  circle: {
+    index: "02 / CIRCLE",
+    title: "Circle",
+    memberDesc: "Community member — initials avatar only, no profile photo.",
+    posts: (n) => `${n} posts`,
+    follow: "→ Follow",
+    members: [
+      { name: "Aya Tanaka", role: "Creative Director", posts: 128 },
+      { name: "Marco Silva", role: "Stylist", posts: 86 },
+      { name: "Lena Fontaine", role: "Photographer", posts: 203 },
+      { name: "Wei Chen", role: "Set Designer", posts: 54 },
+      { name: "Sam Rivera", role: "Producer", posts: 97 },
+      { name: "Yuki Mori", role: "Model", posts: 142 },
+    ],
+  },
+  products: {
+    index: "03 / PRODUCTS",
+    title: "Products",
+    filters: ["All", "Service", "Product"],
+    filterKeys: ["All", "Service", "Product"],
+    buy: "Buy",
+    items: [
+      { tag: "Service", title: "Portfolio Page Build", price: "$120", desc: "A bespoke single-page showcase, themed to your country." },
+      { tag: "Service", title: "Brand Theme Pack", price: "$80", desc: "Color, type, and motif system in your cultural style." },
+      { tag: "Product", title: "Template — Cyberpunk", price: "$29", desc: "Japanese Punk 2077 starter layout, fully editable." },
+      { tag: "Product", title: "Template — Art Deco", price: "$29", desc: "Parisian gilded layout for elegant storefronts." },
+      { tag: "Service", title: "Full Site + Hosting", price: "$240", desc: "End-to-end page generation, deployment included." },
+      { tag: "Product", title: "Motif Asset Set", price: "$15", desc: "Vector geometry packs — no photos, pure shapes." },
+    ],
+  },
+  about: {
+    index: "04 / ABOUT",
+    title: "About Me",
+    name: "Your Name",
+    role: "Creator · Page Builder",
+    bio:
+      "This is a placeholder bio block. The YELLOW PAGE generator lets you present yourself, your work, or your store with a visual identity that shifts to match a chosen country's culture. No portrait photo is used here — only an initials avatar and type.",
+    timeline: "// Timeline",
+    skills: ["UI Systems", "Theming", "Typography", "Motion", "Brand", "Prototyping", "Localization"],
+    timelineItems: [
+      { year: "2026", title: "Launched YELLOW PAGE", desc: "Cultural-theme page generator goes live." },
+      { year: "2024", title: "Independent Studio", desc: "Design systems for global creators." },
+      { year: "2021", title: "Senior Product Designer", desc: "Led multi-locale brand work." },
+    ],
+  },
+  contact: {
+    index: "05 / CONTACT",
+    title: "Contact Me",
+    name: "Name",
+    namePh: "Your name",
+    email: "Email",
+    emailPh: "you@example.com",
+    message: "Message",
+    messagePh: "Tell me about your page…",
+    send: "Send Message",
+    sent: "Message Sent ✓",
+    connect: "// Connect",
+  },
+  loading: [
+    "> SYSTEM ONLINE",
+    "> LOADING CULTURAL THEME ENGINE",
+    "> RENDERING YELLOW PAGE",
+  ],
+};
+
+const ZH = {
+  nav: [
+    { to: "/", label: "首页", end: true },
+    { to: "/content", label: "内容" },
+    { to: "/circle", label: "圈子" },
+    { to: "/products", label: "产品" },
+    { to: "/about", label: "关于我" },
+    { to: "/contact", label: "联系我" },
+  ],
+  home: {
+    tag: "// 搭建你的主页",
+    subtitle: "Build Your Page",
+    desc:
+      "黄页——OPC 时代的新黄页——一个跨文化感知的数字助手主页生成器。",
+    ctaBuild: "开始搭建",
+    ctaShowcase: "浏览展示",
+    explore: "// 探索板块",
+    enter: "进入",
+    open: "→ 打开",
+    entries: [
+      { to: "/content", label: "内容", desc: "作品集与编辑展示" },
+      { to: "/circle", label: "圈子", desc: "创作者社区" },
+      { to: "/products", label: "产品", desc: "服务与模板" },
+    ],
+  },
+  country: {
+    title: "// 选择国家 — 切换文化风格",
+    autoRotate: " · 空闲时每 4 秒自动切换（交互后暂停）",
+    activeStyle: "当前风格：",
+  },
+  footer: (year, styleName, label) =>
+    `YELLOW PAGE © ${year} — ${styleName} 主题 · ${label}`,
+  content: {
+    index: "01 / 内容",
+    title: "内容",
+    placeholder: "展示占位区块——仅排版与几何图形，本原型不含图片。",
+    view: "→ 查看",
+    items: [
+      { tag: "专题", title: "霓虹街区造型集", meta: "12 帧" },
+      { tag: "展示", title: "工作室 Session 04", meta: "8 帧" },
+      { tag: "文章", title: "设计文化主题", meta: "6 分钟阅读" },
+      { tag: "作品集", title: "秀场 / 竖版系列", meta: "20 帧" },
+      { tag: "专题", title: "午夜市集故事", meta: "14 帧" },
+      { tag: "展示", title: "概念板：2077", meta: "10 帧" },
+    ],
+  },
+  circle: {
+    index: "02 / 圈子",
+    title: "圈子",
+    memberDesc: "社区成员——仅显示首字母头像，无个人照片。",
+    posts: (n) => `${n} 篇帖子`,
+    follow: "→ 关注",
+    members: [
+      { name: "Aya Tanaka", role: "创意总监", posts: 128 },
+      { name: "Marco Silva", role: "造型师", posts: 86 },
+      { name: "Lena Fontaine", role: "摄影师", posts: 203 },
+      { name: "Wei Chen", role: "布景设计师", posts: 54 },
+      { name: "Sam Rivera", role: "制作人", posts: 97 },
+      { name: "Yuki Mori", role: "模特", posts: 142 },
+    ],
+  },
+  products: {
+    index: "03 / 产品",
+    title: "产品",
+    filters: ["全部", "服务", "产品"],
+    filterKeys: ["All", "Service", "Product"],
+    buy: "购买",
+    items: [
+      { tag: "服务", title: "作品集页面定制", price: "¥880", desc: "按国家文化主题定制的单页展示站点。" },
+      { tag: "服务", title: "品牌主题包", price: "¥580", desc: "色彩、字体与纹样系统，融入文化风格。" },
+      { tag: "产品", title: "模板 — Cyberpunk", price: "¥199", desc: "Japanese Punk 2077 入门布局，完全可编辑。" },
+      { tag: "产品", title: "模板 — Art Deco", price: "¥199", desc: "巴黎装饰艺术风格，适合优雅展示。" },
+      { tag: "服务", title: "全站 + 托管", price: "¥1680", desc: "端到端页面生成与部署。" },
+      { tag: "产品", title: "纹样素材包", price: "¥99", desc: "纯几何矢量包——无照片，纯形状。" },
+    ],
+  },
+  about: {
+    index: "04 / 关于",
+    title: "关于我",
+    name: "你的名字",
+    role: "创作者 · 页面搭建者",
+    bio:
+      "这是个人简介占位区块。YELLOW PAGE 生成器让你以所选国家的文化视觉呈现自己、作品或店铺。此处不使用肖像照片——仅首字母头像与排版。",
+    timeline: "// 时间线",
+    skills: ["界面系统", "主题设计", "字体排印", "动效", "品牌", "原型", "本地化"],
+    timelineItems: [
+      { year: "2026", title: "发布 YELLOW PAGE", desc: "文化主题页面生成器上线。" },
+      { year: "2024", title: "独立工作室", desc: "为全球创作者构建设计系统。" },
+      { year: "2021", title: "高级产品设计师", desc: "主导多地区品牌项目。" },
+    ],
+  },
+  contact: {
+    index: "05 / 联系",
+    title: "联系我",
+    name: "姓名",
+    namePh: "你的姓名",
+    email: "邮箱",
+    emailPh: "you@example.com",
+    message: "留言",
+    messagePh: "说说你想搭建的页面…",
+    send: "发送留言",
+    sent: "已发送 ✓",
+    connect: "// 社交连接",
+  },
+  loading: [
+    "> 系统就绪",
+    "> 加载文化主题引擎",
+    "> 渲染 YELLOW PAGE",
+  ],
+};
+
+export function getCopy(country) {
+  return country === "china" ? ZH : EN;
+}

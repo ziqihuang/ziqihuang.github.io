@@ -1,18 +1,11 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import GlitchText from "./reactbits/GlitchText";
-
-const NAV_ITEMS = [
-  { to: "/", label: "Home", end: true },
-  { to: "/content", label: "Content" },
-  { to: "/circle", label: "Circle" },
-  { to: "/products", label: "Products" },
-  { to: "/about", label: "About Me" },
-  { to: "/contact", label: "Contact Me" },
-];
+import { useCopy } from "../hooks/useCopy";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const copy = useCopy();
 
   return (
     <header className="header">
@@ -33,7 +26,7 @@ export default function Header() {
       </button>
 
       <nav className={`nav ${open ? "open" : ""}`}>
-        {NAV_ITEMS.map((item) => (
+        {copy.nav.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}

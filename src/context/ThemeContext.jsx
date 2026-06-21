@@ -38,6 +38,7 @@ export function ThemeProvider({ children }) {
     });
     root.dataset.country = theme.id;
     root.dataset.motif = theme.tokens["--motif"];
+    document.documentElement.lang = theme.id === "china" ? "zh-CN" : "en";
     window.localStorage.setItem(STORAGE_KEY, theme.id);
   }, [theme]);
 

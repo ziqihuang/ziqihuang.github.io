@@ -1,11 +1,13 @@
 import { Avatar, PageSection } from "../components/Section";
-import { CIRCLE_MEMBERS } from "../data/mock";
+import { useCopy } from "../hooks/useCopy";
 
 export default function CirclePage() {
+  const copy = useCopy();
+
   return (
-    <PageSection index="02 / CIRCLE" title="Circle">
+    <PageSection index={copy.circle.index} title={copy.circle.title}>
       <div className="grid">
-        {CIRCLE_MEMBERS.map((m) => (
+        {copy.circle.members.map((m) => (
           <article key={m.name} className="card">
             <div className="member">
               <Avatar name={m.name} />
@@ -14,12 +16,10 @@ export default function CirclePage() {
                 <small>{m.role}</small>
               </div>
             </div>
-            <p style={{ marginTop: 14 }}>
-              Community member — initials avatar only, no profile photo.
-            </p>
+            <p style={{ marginTop: 14 }}>{copy.circle.memberDesc}</p>
             <div className="card-meta">
-              <span>{m.posts} posts</span>
-              <span>→ Follow</span>
+              <span>{copy.circle.posts(m.posts)}</span>
+              <span>{copy.circle.follow}</span>
             </div>
           </article>
         ))}
