@@ -919,16 +919,6 @@ function SplashCursor({
       splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
     }
 
-    function clickSplat(pointer) {
-      const color = generateColor();
-      color.r *= 10.0;
-      color.g *= 10.0;
-      color.b *= 10.0;
-      const dx = 10 * (Math.random() - 0.5);
-      const dy = 30 * (Math.random() - 0.5);
-      splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
-    }
-
     function splat(x, y, dx, dy, color) {
       splatProgram.bind();
       gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
@@ -1086,14 +1076,6 @@ function SplashCursor({
       return Math.floor(input * pixelRatio);
     }
 
-    const handleMouseDown = (e) => {
-      const pointer = pointers[0];
-      const posX = scaleByPixelRatio(e.clientX);
-      const posY = scaleByPixelRatio(e.clientY);
-      updatePointerDownData(pointer, -1, posX, posY);
-      clickSplat(pointer);
-    };
-
     const handleFirstMouseMove = (e) => {
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
@@ -1146,7 +1128,6 @@ function SplashCursor({
 
     let animationId = requestAnimationFrame(updateFrame);
 
-    window.addEventListener("mousedown", handleMouseDown);
     document.body.addEventListener("mousemove", handleFirstMouseMove);
     window.addEventListener("mousemove", handleMouseMove);
     document.body.addEventListener("touchstart", handleFirstTouchStart);
@@ -1155,7 +1136,6 @@ function SplashCursor({
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("mousedown", handleMouseDown);
       document.body.removeEventListener("mousemove", handleFirstMouseMove);
       window.removeEventListener("mousemove", handleMouseMove);
       document.body.removeEventListener("touchstart", handleFirstTouchStart);
